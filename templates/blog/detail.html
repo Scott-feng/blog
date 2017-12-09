@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="container-fluid">
+
+
+<article class="post post-{{ post.pk }}">
+
+    <h1 class="entry-title">{{ post.title }}</h1>
+    <div class="entry-meta">
+        <span class="post-category">{{ post.category.name }}</span>
+        <span class="post-date"><time class="entry-date"
+            datetime="{{ post.created_time }}">{{ post.created_time }}</span>
+            <span class="post-author">{{ post.author }}</span>
+            <span class="comments-link">{{ post.comment_set.count }} 评论</span>
+            <span class="views-count">588 阅读</span>
+        </div>
+
+        <div class="entry-content">
+            {{ post.body | safe }}
+        </div>
+    </article>
+
+    <div class="col-sm-6">
+
+
+        <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
+            {% csrf_token %}
+            <div class="row">
+                <h3>参与评论</h3>
+                <br />
+                <div class="form-group">
+                    <!-- <input class="input your-name" pl aceholder="Type your name here..." type='text' required> -->
+                    <label for="{{ form.name.id_for_label}}">用户：</label>
+                    {{ form.name }}
+                    {{ form.name.errors }}
+
+                    <br />
+                    <label for="{{ form.text.id_for_label}}">评论：</label>
+                    {{ form.text }}
+                    {{ form.text.errors }}
+
+                </div>
+                <button type="submit" class="btn btn-primary" style="float:right">提交</button>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="cotainer">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="page-header">
+                    <h2>评论列表 </h2>
+                    <h3>{{ post.comment_set.count }}条评论</h3>
+                </div>
+
+                <ol class="comments-list list-unstyled">
+                    {% for comment in comment_list %}
+                    <div class="media">
+                        <li>
+                            <p class="pull-right"><small>{{ comment.created_time }}</small></p>
+                            <div class="media-body">
+                                <h4 class="media-heading user_name">{{ comment.name }}</h4>
+                                {{ comment.text }}
+
+                            </div>
+                        </li>
+                    </div>
+                    <br />
+                    {% empty %}
+                    no comments!
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock main %}
