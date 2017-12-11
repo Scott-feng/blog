@@ -25,7 +25,7 @@ SECRET_KEY = 'myc82*m+@a73e2ahzk8wz=*dn+03u1l_zn#+6i$gxov7gp56!4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.scottshen.link']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.scottshen.link','.scottshen.online']
 
 
 # Application definition
