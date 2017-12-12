@@ -23,6 +23,7 @@
         no articles to be published!
     </div>
 {% endfor %}
+
 {% if is_paginated %}
 <div class="pagination-simple">
     <ul class="pager">
@@ -37,6 +38,8 @@
         <li><a href="?page={{ page_obj.next_page_number }}">下一页</a></li>
     {% endif %}
     </ul>
+    <br />
+    <br />
 </div>
 {% endif %}
 
