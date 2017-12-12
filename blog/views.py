@@ -1,7 +1,7 @@
 import markdown
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView,DetailView
-from .models import Post
+from .models import Post,Category
 from comments.forms import CommentForm
 # Create your views here.
 
@@ -15,7 +15,7 @@ class CategoryView(ListView):
     model=Post
     template_name='blog/index.html'
     context_object_name='post_list'
-
+    paginate_by=5
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate)
@@ -24,11 +24,11 @@ class ArchivesView(ListView):
     model=Post
     template_name='blog/index.html'
     context_object_name='post_list'
-
+    paginate_by=5
     def get_queryset(self):
         year=self.kwargs.get('year')
         month=self.kwargs.get('month')
-        return super(ArchiveView,self).get_queryset().filter(created_time__year=year,
+        return super(ArchivesView,self).get_queryset().filter(created_time__year=year,
                                                             created_time__month=month)
 
 class PostDetailView(DetailView):
