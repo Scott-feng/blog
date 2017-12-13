@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block main %}
-<div class="container-fluid">
+<div class="container>
 
 
 <article class="post post-{{ post.pk }}">
@@ -22,9 +22,8 @@
     <br />
     <br />
     <br />
+
     <div class="col-sm-8">
-
-
         <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
             {% csrf_token %}
             <div class="row">
