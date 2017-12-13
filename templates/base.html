@@ -32,65 +32,70 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <main class="col-sm-8">
-                {% block main %}
-                {% endblock main %}
-            </main>
 
-            <div class="col-sm-3 col-sm-offset-1">
-                <div class="sidebar-module">
-                    <h3 class="widget-title">最新文章</h3>
-                    {% get_recent_posts as recent_post_list %}
-                    <ol class="list-unstyled">
-                        {% for post in recent_post_list %}
-                        <li>
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                        </li>
-                        {% empty %}
-                        暂无文章！
-                        {% endfor %}
-                    </ol>
-                </div>
+<div class="container">
+    <main class="col-sm-8">
+        {% block main %}
+        {% endblock main %}
+    </main>
 
-                <div class="sidebar-module">
-                    <h3 class="widget-title">归档</h3>
-                    {% archives as date_list %}
-                    <ol class="list-unstyled">
-                        {% for date in date_list %}
-                        <li>
-                            <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
-                        </li>
-                        {% empty %}
-                        暂无归档！
-                        {% endfor %}
-                    </ol>
-                </div>
 
-                <div class="sidebar-module">
-                    <h3 class="widget-title">分类</h3>
-                    {% get_categories as category_list %}
-                    <ol class="list-unstyled">
-                        {% for category in category_list %}
-                        <li>
-                            <a href="{% url 'blog:category' category.pk %}">{{ category.name }} <span class="post-count">({{ category.num_posts }})</span></a>
-                        </li>
-                        {% empty %}
-                        暂无分类！
-                        {% endfor %}
-                    </ol>
-                </div>
-            </div>
+
+
+
+
+    <div class="col-sm-3 col-sm-offset-1">
+        <div class="sidebar-module">
+            <h3 class="widget-title">最新文章</h3>
+            {% get_recent_posts as recent_post_list %}
+            <ol class="list-unstyled">
+                {% for post in recent_post_list %}
+                <li>
+                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                </li>
+                {% empty %}
+                暂无文章！
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="sidebar-module">
+            <h3 class="widget-title">归档</h3>
+            {% archives as date_list %}
+            <ol class="list-unstyled">
+                {% for date in date_list %}
+                <li>
+                    <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月</a>
+                </li>
+                {% empty %}
+                暂无归档！
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="sidebar-module">
+            <h3 class="widget-title">分类</h3>
+            {% get_categories as category_list %}
+            <ol class="list-unstyled">
+                {% for category in category_list %}
+                <li>
+                    <a href="{% url 'blog:category' category.pk %}">{{ category.name }} <span class="post-count">({{ category.num_posts }})</span></a>
+                </li>
+                {% empty %}
+                暂无分类！
+                {% endfor %}
+            </ol>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">Blog built for <a href="http://getbootstrap.com">Bootstrap</a> and <a href="https://www.djangoproject.com">Django </a>by Scott</a>.</p>
-        </div>
-    </footer>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+</div>
+<footer class="footer">
+    <div class="container text-center">
+        <span class="text-muted" credit>Built template for <a href="http://www.bootcss.com/">Bootstrap</a> by &copy;  Scott</span>
+    </div>
+
+</footer>
+
 
 </body>
 </html>
