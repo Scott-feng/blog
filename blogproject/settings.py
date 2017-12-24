@@ -120,7 +120,7 @@ USE_TZ = True
 #ali oss
 OSS_ACCESS_KEY_ID = "LTAI0j2LzpZFO4Lb"
 OSS_ACCESS_KEY_SECRET = "hmwGbDnA8SsqhWPafshdaw3DcUxuER"
-OSS_BUCKET_NAME = "scottbucket"
+OSS_BUCKET_NAME = "blogscott"
 OSS_BUCKET_ACL = "public-read"
 
 OSS_ENDPOINT = "oss-cn-hangzhou.aliyuncs.com"
@@ -128,7 +128,9 @@ OSS_ENDPOINT = "oss-cn-hangzhou.aliyuncs.com"
 DEFAULT_FILE_STORAGE = 'django_oss_storage.backends.OssMediaStorage'
 STATICFILES_STORAGE = 'django_oss_storage.backends.OssStaticStorage'
 
-MEDIA_URL='/media/'
+OSS_PREFIX = 'oss://'
+MEDIA_PREFIX = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Static files (CSS, JavaScript, Images)
