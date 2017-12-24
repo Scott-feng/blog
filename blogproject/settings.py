@@ -120,7 +120,7 @@ USE_TZ = True
 OSS_ACCESS_KEY_ID = "LTAI0j2LzpZFO4Lb"
 OSS_ACCESS_KEY_SECRET = "hmwGbDnA8SsqhWPafshdaw3DcUxuER"
 OSS_BUCKET_NAME = "scottbucket"
-OSS_BUCKET_ACL = "pblic-read"
+OSS_BUCKET_ACL = "public-read"
 
 OSS_ENDPOINT = "oss-cn-hangzhou.aliyuncs.com"
 
